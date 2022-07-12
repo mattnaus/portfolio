@@ -1,61 +1,15 @@
 <script context="module">
 	export const prerender = true;
+	import Topbar from '$lib/topBar.svelte';
 </script>
 
-<script>
-	import Counter from '$lib/Counter.svelte';
-</script>
-
-<svelte:head>
-	<title>Home</title>
-	<meta name="description" content="Svelte demo app" />
-</svelte:head>
-
-<section>
-	<h1>
-		<span class="welcome">
-			<picture>
-				<source srcset="svelte-welcome.webp" type="image/webp" />
-				<img src="svelte-welcome.png" alt="Welcome" />
-			</picture>
-		</span>
-
-		to your new<br />SvelteKit app
-	</h1>
-
-	<h2>
-		try editing <strong>src/routes/index.svelte</strong>
-	</h2>
-
-	<Counter />
+<section class="bg-slate-200 p-5">
+	<Topbar />
+	<div class="p-5 bg-white border border-slate-200 rounded-xl">
+		<label class="uppercase text-slate-400 text-xs mb-2 block">in your wallet</label>
+		<p class="text-slate-800 text-3xl font-bold mb-2">
+			12.3456 <span class="text-xl">ETH</span>
+		</p>
+		<p class="text-slate-700 text-lg font-medium">= $10,123,678</p>
+	</div>
 </section>
-
-<style>
-	section {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		flex: 1;
-	}
-
-	h1 {
-		width: 100%;
-	}
-
-	.welcome {
-		display: block;
-		position: relative;
-		width: 100%;
-		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
-	}
-
-	.welcome img {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		display: block;
-	}
-</style>
