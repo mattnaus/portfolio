@@ -2,7 +2,8 @@
 	export const prerender = true;
 	import Topbar from '$lib/topBar.svelte';
 	import Card from '$lib/card.svelte';
-	import arrowDown from '$lib/assets/arrow-down.svg';
+	import List from '$lib/list.svelte';
+	import plus from '$lib/assets/plus.png';
 
 	import {
 		Listbox,
@@ -14,7 +15,8 @@
 	const people = [
 		{ id: 1, name: 'ETH price ↓', unavailable: false },
 		{ id: 2, name: 'ETH price ↑', unavailable: false },
-		{ id: 3, name: 'Amount of ETH', unavailable: false }
+		{ id: 3, name: 'Amount of ETH ↓', unavailable: false },
+		{ id: 4, name: 'Score ↓', unavailable: false }
 	];
 
 	let selectedPerson = people[0];
@@ -41,7 +43,7 @@
 	};
 </script>
 
-<section class="bg-slate-50 p-5 border-b border-color-slate-200">
+<section class="bg-slate-50 p-5 border-b border-slate-200">
 	<Topbar />
 	<Card cardData={card1} styles="mb-5" />
 	<div class="grid grid-cols-2 gap-5">
@@ -50,8 +52,8 @@
 	</div>
 </section>
 
-<section class="p-5">
-	<div class="grid grid-cols-2 gap-5 items-center">
+<section class="">
+	<div class="grid grid-cols-2 gap-5 items-center p-5 pt-10">
 		<h3 class="text-slate-700 text-sm font-medium">Your ETH Stacks:</h3>
 		<Listbox
 			value={selectedPerson}
@@ -61,7 +63,9 @@
 			<ListboxButton class="text-slate-500 bg-slate-100 px-3 py-2 rounded-xl w-full">
 				<div class="flex">
 					<span class="w-13 mr-1">Order by:</span>
-					<div class="w-20 h-4 font-bold text-ellipsis overflow-hidden white-space:nowrap">
+					<div
+						class="w-20 h-4 font-bold text-ellipsis overflow-hidden white-space:nowrap text-left"
+					>
 						{selectedPerson.name}
 					</div>
 				</div>
@@ -77,4 +81,13 @@
 			</ListboxOptions>
 		</Listbox>
 	</div>
+	<List />
 </section>
+<button
+	class="fixed bg-slate-900 text-white bottom-5 left-5 right-5 w-auto p-4 rounded-full shadow-3xl flex items-center justify-center"
+>
+	<span>Add transactions</span>
+	<span class="w-8 h-8 bg-pink-600 rounded-full ml-4 flex items-center justify-center">
+		<img src={plus} alt="Plus" class="w-3 h-3" />
+	</span>
+</button>
