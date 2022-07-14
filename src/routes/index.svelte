@@ -46,10 +46,10 @@
 </script>
 
 <section
-	class="w-iphone12prow h-iphone13proh border-slate-900 border-8 bg-white mx-auto rounded-4xl overflow-hidden relative shadow-3xl mt-10"
+	class="xs:w-iphone12prow h-iphone13proh border-slate-900 xs:border-8 border-0 bg-white mx-auto xs:rounded-4xl xs:overflow-hidden xs:relative xs:shadow-3xl xs:mt-10 mt-0"
 >
 	<div
-		class="flex justify-between absolute left-0 top-0 right-0 z-10 bg-slate-700 h-11 text-white font-medium"
+		class="hidden xs:flex justify-between absolute left-0 top-0 right-0 z-10 bg-slate-700 h-11 text-white font-medium"
 	>
 		<div class="w-28 flex items-center pl-6"><span>20:36</span></div>
 		<div class="w-36 h-7 bg-slate-900 rounded-b-xl" />
@@ -59,7 +59,7 @@
 		</div>
 	</div>
 
-	<div class="phone absolute top-10 bottom-0 right-0 left-0 overflow-x-hidden overflow-y-auto">
+	<div class="phone xs:absolute top-10 bottom-0 right-0 left-0 overflow-x-hidden overflow-y-auto">
 		<section class="bg-slate-50 p-5 border-b border-slate-200">
 			<Topbar />
 			<Card cardData={card1} styles="mb-5" />
