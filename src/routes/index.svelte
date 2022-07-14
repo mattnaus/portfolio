@@ -46,7 +46,7 @@
 </script>
 
 <section
-	class="xs:w-iphone12prow h-iphone13proh border-slate-900 xs:border-8 border-0 bg-white mx-auto xs:rounded-4xl xs:overflow-hidden xs:relative xs:shadow-3xl xs:mt-10 mt-0"
+	class="overflow-fix xs:w-iphone12prow h-iphone13proh border-slate-900 xs:border-8 border-0 bg-white mx-auto xs:rounded-4xl xs:overflow-hidden xs:relative xs:shadow-3xl xs:mt-10 mt-0"
 >
 	<div
 		class="hidden xs:flex justify-between absolute left-0 top-0 right-0 z-10 bg-slate-700 h-11 text-white font-medium"
@@ -122,5 +122,9 @@
 
 	.phone::-webkit-scrollbar {
 		display: none; /* for Chrome, Safari, and Opera */
+	}
+
+	.overflow-fix {
+		-webkit-mask-image: -webkit-radial-gradient(white, black);
 	}
 </style>
