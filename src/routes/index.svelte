@@ -101,14 +101,16 @@
 			<List />
 		</section>
 	</div>
-	<button
-		class="absolute bg-slate-900 text-white bottom-5 left-5 right-5 z-10 p-4 rounded-full shadow-3xl flex items-center justify-center"
-	>
-		<span>Add transactions</span>
-		<span class="w-8 h-8 bg-pink-600 rounded-full ml-4 flex items-center justify-center">
-			<img src={plus} alt="Plus" class="w-3 h-3" />
-		</span>
-	</button>
+	<div class="absolute bottom-5 left-5 right-5 z-10">
+		<button
+			class="bg-slate-900 text-white  p-4 rounded-full shadow-3xl flex items-center justify-center w-full"
+		>
+			<span>Add transactions</span>
+			<span class="w-8 h-8 bg-pink-600 rounded-full ml-4 flex items-center justify-center">
+				<img src={plus} alt="Plus" class="w-3 h-3" />
+			</span>
+		</button>
+	</div>
 </section>
 
 <style>
