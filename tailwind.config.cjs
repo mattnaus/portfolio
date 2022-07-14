@@ -14,7 +14,7 @@ module.exports = {
 				iphone13proh: '860px'
 			},
 			borderRadius: {
-				'4xl': '50px'
+				'4xl': '60px'
 			}
 		}
 	},

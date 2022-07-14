@@ -4,6 +4,8 @@
 	import Card from '$lib/card.svelte';
 	import List from '$lib/list.svelte';
 	import plus from '$lib/assets/plus.png';
+	import battery from '$lib/assets/battery.svg';
+	import wifi from '$lib/assets/wifi.svg';
 
 	import {
 		Listbox,
@@ -47,11 +49,14 @@
 	class="w-iphone12prow h-iphone13proh border-slate-900 border-8 bg-white mx-auto rounded-4xl overflow-hidden relative shadow-3xl mt-10"
 >
 	<div
-		class="flex justify-between absolute left-0 top-0 right-0 z-10 bg-slate-700 h-10 text-slate-50 font-medium"
+		class="flex justify-between absolute left-0 top-0 right-0 z-10 bg-slate-700 h-11 text-white font-medium"
 	>
-		<div class="w-28 flex items-center pl-8"><span>20:36</span></div>
-		<div class="w-36 h-6 bg-slate-900 rounded-b-xl" />
-		<div class="w-28" />
+		<div class="w-28 flex items-center pl-6"><span>20:36</span></div>
+		<div class="w-36 h-7 bg-slate-900 rounded-b-xl" />
+		<div class="w-28 flex items-center justify-end pr-6">
+			<img src={wifi} alt="Wifi icon" class="mr-2" />
+			<img src={battery} alt="Battery icon" />
+		</div>
 	</div>
 
 	<div class="phone absolute top-10 bottom-0 right-0 left-0 overflow-x-hidden overflow-y-auto">
