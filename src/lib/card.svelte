@@ -11,8 +11,6 @@
 		sign: ''
 	};
 
-	console.log(cardData);
-
 	const { type, label, sign, amount, asset, value } = cardData;
 </script>
 

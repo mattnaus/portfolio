@@ -9,7 +9,6 @@
 	let amountWhole = amount - amountDecimals;
 	export let symbol = 'Ξ';
 	export let value;
-	console.log(amountDecimalsFormatted);
 </script>
 
 <li class="p-6 border-b-2 border-slate-100 flex items-center">

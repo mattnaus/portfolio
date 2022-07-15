@@ -7,7 +7,8 @@ module.exports = {
 		},
 		extend: {
 			boxShadow: {
-				'3xl': '0 35px 60px -15px rgba(15, 23, 42, 0.4)'
+				'3xl': '0 35px 60px -15px rgba(15, 23, 42, 0.4)',
+				up: '0 -20px 30px -15px rgba(15, 23, 42, 0.3)'
 			},
 			spacing: {
 				iphone12prow: '406px',

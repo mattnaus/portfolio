@@ -3,6 +3,8 @@
 	import Topbar from '$lib/topBar.svelte';
 	import Card from '$lib/card.svelte';
 	import List from '$lib/list.svelte';
+	import Radiobutton from '$lib/radiobutton.svelte';
+
 	import plus from '$lib/assets/plus.png';
 	import battery from '$lib/assets/battery.svg';
 	import wifi from '$lib/assets/wifi.svg';
@@ -42,6 +44,10 @@
 		label: 'unrealized gains',
 		sign: '-',
 		amount: '$1,456'
+	};
+
+	const showAddTrans = () => {
+		console.log('click');
 	};
 </script>
 
@@ -101,15 +107,38 @@
 			<List />
 		</section>
 	</div>
-	<div class="absolute bottom-5 left-5 right-5 z-10">
+	<div class="absolute bottom-5 left-5 right-5">
 		<button
 			class="bg-slate-900 text-white  p-4 rounded-full shadow-3xl flex items-center justify-center w-full"
+			on:click={showAddTrans}
 		>
 			<span>Add transactions</span>
 			<span class="w-8 h-8 bg-pink-600 rounded-full ml-4 flex items-center justify-center">
 				<img src={plus} alt="Plus" class="w-3 h-3" />
 			</span>
 		</button>
+	</div>
+	<div class="absolute rounded-3xl p-5 bottom-0 left-0 right-0 bg-slate-50 shadow-up">
+		<h3 class="text-slate-700 font-bold border-b border-slate-200 pb-5 mb-5">Add a transaction</h3>
+		<form>
+			<fieldset>
+				<legend class="uppercase text-slate-400 font-medium text-xs mb-2">Transaction type</legend>
+				<div class="flex items-center justify-start">
+					<Radiobutton
+						label="ETH bought"
+						name="transaction_type"
+						id="transaction_type_1"
+						value="ETH bought"
+					/>
+					<Radiobutton
+						label="ETH sold"
+						name="transaction_type"
+						id="transaction_type_2"
+						value="ETH sold"
+					/>
+				</div>
+			</fieldset>
+		</form>
 	</div>
 </section>
 
@@ -124,7 +153,9 @@
 		display: none; /* for Chrome, Safari, and Opera */
 	}
 
-	.overflow-fix {
-		-webkit-mask-image: -webkit-radial-gradient(white, black);
+	@media only screen and (min-width: 440px) {
+		.overflow-fix {
+			transform: translateZ(0);
+		}
 	}
 </style>
