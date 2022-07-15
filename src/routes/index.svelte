@@ -6,8 +6,8 @@
 	import List from '$lib/list.svelte';
 	import Radiobutton from '$lib/radiobutton.svelte';
 	import Button from '$lib/button.svelte';
+	import FieldsetInput from '$lib/fieldsetInput.svelte';
 
-	import plus from '$lib/assets/plus.png';
 	import battery from '$lib/assets/battery.svg';
 	import wifi from '$lib/assets/wifi.svg';
 
@@ -143,68 +143,20 @@
 						/>
 					</div>
 				</fieldset>
-				<fieldset class="mb-7">
-					<div>
-						<legend>
-							<label for="amount" class="uppercase text-slate-400 font-medium text-xs mb-2 block"
-								>Transaction date:</label
-							>
-						</legend>
-						<div class="relative w-full h-12">
-							<input
-								type="string"
-								id="date"
-								name="date"
-								placeholder="mm/dd/yyyy"
-								class="border border-slate-300 rounded-lg overflow-hidden bg-white absolute inset-0 focus:ring-2 focus:outline-0 focus:ring-pink-400 p-3 text-slate-700"
-							/>
-						</div>
-					</div>
-				</fieldset>
-				<fieldset class="mb-7">
-					<div>
-						<legend>
-							<label for="amount" class="uppercase text-slate-400 font-medium text-xs mb-2 block"
-								>Transaction amount:</label
-							>
-						</legend>
-						<div class="relative w-full h-12">
-							<input
-								type="number"
-								id="amount"
-								name="amount"
-								placeholder="Amount in ETH"
-								class="border border-slate-300 rounded-lg overflow-hidden bg-white absolute inset-0 focus:ring-2 focus:outline-0 focus:ring-pink-400 p-3 text-slate-700"
-							/>
-							<div
-								class="w-14 h-11.5 bg-slate-200 top-px right-px absolute rounded-r-lg flex items-center justify-center text-slate-400"
-							>
-								Ξ
-							</div>
-						</div>
-					</div>
-				</fieldset>
-				<fieldset>
-					<div>
-						<label for="amount" class="uppercase text-slate-400 font-medium text-xs mb-2 block"
-							>Asset spot price (value of 1ETH in USD):</label
-						>
-						<div class="relative w-full h-12">
-							<input
-								type="number"
-								id="price"
-								name="price"
-								placeholder="Value in USD"
-								class="border border-slate-300 rounded-lg overflow-hidden bg-white absolute inset-0 focus:ring-2 focus:outline-0 focus:ring-pink-400 p-3 text-slate-700"
-							/>
-							<div
-								class="w-14 h-11.5 bg-slate-200 top-px right-px absolute rounded-r-lg flex items-center justify-center text-slate-400"
-							>
-								$
-							</div>
-						</div>
-					</div>
-				</fieldset>
+				<FieldsetInput
+					label="Transaction date:"
+					input={{ id: 'date', name: 'date', type: 'string', placeholder: 'mm/dd/yyyy' }}
+				/>
+				<FieldsetInput
+					label="Transaction amount:"
+					input={{ id: 'amount', name: 'amount', type: 'number', placeholder: 'Amount in ETH' }}
+					symbol="Ξ"
+				/>
+				<FieldsetInput
+					label="Asset spot price (value of 1ETH in USD):"
+					input={{ id: 'price', name: 'price', type: 'number', placeholder: 'Value in USD' }}
+					symbol="$"
+				/>
 			</form>
 			<div
 				class="flex items-center justify-end bg-slate-50 -ml-5 -mb-5 -mr-5 p-5 border-t-2 border-slate-100"
