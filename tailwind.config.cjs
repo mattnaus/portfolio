@@ -12,7 +12,8 @@ module.exports = {
 			},
 			spacing: {
 				iphone12prow: '406px',
-				iphone13proh: '860px'
+				iphone13proh: '860px',
+				11.5: '46px'
 			},
 			borderRadius: {
 				'4xl': '60px'

@@ -1,13 +1,17 @@
 <script>
 	export const prerender = true;
+	import { fly } from 'svelte/transition';
 	import Topbar from '$lib/topBar.svelte';
 	import Card from '$lib/card.svelte';
 	import List from '$lib/list.svelte';
 	import Radiobutton from '$lib/radiobutton.svelte';
+	import Button from '$lib/button.svelte';
 
 	import plus from '$lib/assets/plus.png';
 	import battery from '$lib/assets/battery.svg';
 	import wifi from '$lib/assets/wifi.svg';
+
+	let addTransVisible = true;
 
 	import {
 		Listbox,
@@ -46,7 +50,8 @@
 		amount: '$1,456'
 	};
 
-	const showAddTrans = () => {
+	const toggleAddTrans = () => {
+		addTransVisible = !addTransVisible;
 		console.log('click');
 	};
 </script>
@@ -108,38 +113,107 @@
 		</section>
 	</div>
 	<div class="absolute bottom-5 left-5 right-5">
-		<button
-			class="bg-slate-900 text-white  p-4 rounded-full shadow-3xl flex items-center justify-center w-full"
-			on:click={showAddTrans}
+		<Button type="one" on:toggleAdd={toggleAddTrans} />
+	</div>
+	{#if addTransVisible}
+		<div
+			class="absolute rounded-3xl p-5 bottom-0 left-0 right-0 bg-white shadow-up"
+			transition:fly={{ y: 200, duration: 500 }}
 		>
-			<span>Add transactions</span>
-			<span class="w-8 h-8 bg-pink-600 rounded-full ml-4 flex items-center justify-center">
-				<img src={plus} alt="Plus" class="w-3 h-3" />
-			</span>
-		</button>
-	</div>
-	<div class="absolute rounded-3xl p-5 bottom-0 left-0 right-0 bg-slate-50 shadow-up">
-		<h3 class="text-slate-700 font-bold border-b border-slate-200 pb-5 mb-5">Add a transaction</h3>
-		<form>
-			<fieldset>
-				<legend class="uppercase text-slate-400 font-medium text-xs mb-2">Transaction type</legend>
-				<div class="flex items-center justify-start">
-					<Radiobutton
-						label="ETH bought"
-						name="transaction_type"
-						id="transaction_type_1"
-						value="ETH bought"
-					/>
-					<Radiobutton
-						label="ETH sold"
-						name="transaction_type"
-						id="transaction_type_2"
-						value="ETH sold"
-					/>
-				</div>
-			</fieldset>
-		</form>
-	</div>
+			<h3 class="text-slate-700 font-bold border-b border-slate-200 pb-5 mb-5">
+				Add a transaction
+			</h3>
+			<form class="mb-14">
+				<fieldset class="mb-7">
+					<legend class="uppercase text-slate-400 font-medium text-xs mb-2">Transaction type</legend
+					>
+					<div class="flex items-center justify-start">
+						<Radiobutton
+							label="ETH bought"
+							name="transaction_type"
+							id="transaction_type_1"
+							value="ETH bought"
+							checked
+						/>
+						<Radiobutton
+							label="ETH sold"
+							name="transaction_type"
+							id="transaction_type_2"
+							value="ETH sold"
+						/>
+					</div>
+				</fieldset>
+				<fieldset class="mb-7">
+					<div>
+						<legend>
+							<label for="amount" class="uppercase text-slate-400 font-medium text-xs mb-2 block"
+								>Transaction date:</label
+							>
+						</legend>
+						<div class="relative w-full h-12">
+							<input
+								type="string"
+								id="date"
+								name="date"
+								placeholder="mm/dd/yyyy"
+								class="border border-slate-300 rounded-lg overflow-hidden bg-white absolute inset-0 focus:ring-2 focus:outline-0 focus:ring-pink-400 p-3 text-slate-700"
+							/>
+						</div>
+					</div>
+				</fieldset>
+				<fieldset class="mb-7">
+					<div>
+						<legend>
+							<label for="amount" class="uppercase text-slate-400 font-medium text-xs mb-2 block"
+								>Transaction amount:</label
+							>
+						</legend>
+						<div class="relative w-full h-12">
+							<input
+								type="number"
+								id="amount"
+								name="amount"
+								placeholder="Amount in ETH"
+								class="border border-slate-300 rounded-lg overflow-hidden bg-white absolute inset-0 focus:ring-2 focus:outline-0 focus:ring-pink-400 p-3 text-slate-700"
+							/>
+							<div
+								class="w-14 h-11.5 bg-slate-200 top-px right-px absolute rounded-r-lg flex items-center justify-center text-slate-400"
+							>
+								Ξ
+							</div>
+						</div>
+					</div>
+				</fieldset>
+				<fieldset>
+					<div>
+						<label for="amount" class="uppercase text-slate-400 font-medium text-xs mb-2 block"
+							>Asset spot price (value of 1ETH in USD):</label
+						>
+						<div class="relative w-full h-12">
+							<input
+								type="number"
+								id="price"
+								name="price"
+								placeholder="Value in USD"
+								class="border border-slate-300 rounded-lg overflow-hidden bg-white absolute inset-0 focus:ring-2 focus:outline-0 focus:ring-pink-400 p-3 text-slate-700"
+							/>
+							<div
+								class="w-14 h-11.5 bg-slate-200 top-px right-px absolute rounded-r-lg flex items-center justify-center text-slate-400"
+							>
+								$
+							</div>
+						</div>
+					</div>
+				</fieldset>
+			</form>
+			<div
+				class="flex items-center justify-end bg-slate-50 -ml-5 -mb-5 -mr-5 p-5 border-t-2 border-slate-100"
+			>
+				<Button type="three" on:toggleAdd={toggleAddTrans} />
+				<Button type="two" />
+			</div>
+		</div>
+	{/if}
 </section>
 
 <style>
@@ -157,5 +231,16 @@
 		.overflow-fix {
 			transform: translateZ(0);
 		}
+	}
+
+	input::-webkit-outer-spin-button,
+	input::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	}
+
+	/* Firefox */
+	input[type='number'] {
+		-moz-appearance: textfield;
 	}
 </style>
