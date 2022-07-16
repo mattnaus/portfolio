@@ -3,7 +3,7 @@
 	import { fly } from 'svelte/transition';
 	import Topbar from '$lib/topBar.svelte';
 	import Card from '$lib/card.svelte';
-	import List from '$lib/list.svelte';
+	import Stacks from '$lib/stacks.svelte';
 	import Radiobutton from '$lib/radiobutton.svelte';
 	import Button from '$lib/button.svelte';
 	import FieldsetInput from '$lib/fieldsetInput.svelte';
@@ -11,7 +11,7 @@
 	import battery from '$lib/assets/battery.svg';
 	import wifi from '$lib/assets/wifi.svg';
 
-	let addTransVisible = true;
+	let addTransVisible = false;
 
 	import {
 		Listbox,
@@ -49,11 +49,6 @@
 		sign: '-',
 		amount: '$1,456'
 	};
-
-	const toggleAddTrans = () => {
-		addTransVisible = !addTransVisible;
-		console.log('click');
-	};
 </script>
 
 <section
@@ -80,7 +75,7 @@
 			</div>
 		</section>
 
-		<section class="">
+		<section>
 			<div class="grid grid-cols-2 gap-5 items-center p-5 pt-10">
 				<h3 class="text-slate-700 text-sm font-medium">Your ETH Stacks:</h3>
 				<Listbox
@@ -102,18 +97,27 @@
 						class="absolute w-full px-5 pt-5 bg-white rounded-xl drop-shadow text-sm text-slate-600"
 					>
 						{#each people as person (person.id)}
-							<ListboxOption value={person} disabled={person.unavailable} class="mb-5">
+							<ListboxOption
+								value={person}
+								disabled={person.unavailable}
+								class="mb-5 cursor-pointer"
+							>
 								{person.name}
 							</ListboxOption>
 						{/each}
 					</ListboxOptions>
 				</Listbox>
 			</div>
-			<List />
+			<Stacks />
 		</section>
 	</div>
 	<div class="absolute bottom-5 left-5 right-5">
-		<Button type="one" on:toggleAdd={toggleAddTrans} />
+		<Button
+			type="one"
+			on:toggleAdd={() => {
+				addTransVisible = !addTransVisible;
+			}}
+		/>
 	</div>
 	{#if addTransVisible}
 		<div
@@ -161,7 +165,12 @@
 			<div
 				class="flex items-center justify-end bg-slate-50 -ml-5 -mb-5 -mr-5 p-5 border-t-2 border-slate-100"
 			>
-				<Button type="three" on:toggleAdd={toggleAddTrans} />
+				<Button
+					type="three"
+					on:toggleAdd={() => {
+						addTransVisible = !addTransVisible;
+					}}
+				/>
 				<Button type="two" />
 			</div>
 		</div>
@@ -183,16 +192,5 @@
 		.overflow-fix {
 			transform: translateZ(0);
 		}
-	}
-
-	input::-webkit-outer-spin-button,
-	input::-webkit-inner-spin-button {
-		-webkit-appearance: none;
-		margin: 0;
-	}
-
-	/* Firefox */
-	input[type='number'] {
-		-moz-appearance: textfield;
 	}
 </style>

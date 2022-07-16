@@ -6,8 +6,8 @@
 	export let checked = false;
 </script>
 
-<label for={id} class="uppercase relative text-slate-700 flex items-center mr-5">
-	<input type="radio" {name} {id} {value} class="absolute h-0 w-0" {checked} />
+<label for={id} class="uppercase relative text-slate-700 flex items-center mr-5 cursor-pointer">
+	<input type="radio" {name} {id} {value} class="hidden h-0 w-0" {checked} />
 	<span class="check mr-2 block w-7 h-7 border-2 border-slate-200 rounded-full" />
 	{label}
 </label>
