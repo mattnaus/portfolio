@@ -52,7 +52,7 @@
 </script>
 
 <section
-	class="overflow-fix xs:w-iphone12prow h-iphone13proh border-slate-900 xs:border-8 border-0 bg-white mx-auto xs:rounded-4xl xs:overflow-hidden xs:relative xs:shadow-3xl xs:mt-10 mt-0"
+	class="overflow-fix xs:w-iphone12prow xs:h-iphone13proh border-slate-900 xs:border-8 border-0 bg-white mx-auto xs:rounded-4xl xs:overflow-hidden xs:relative xs:shadow-3xl xs:mt-10 mt-0"
 >
 	<div
 		class="hidden xs:flex justify-between absolute left-0 top-0 right-0 z-10 bg-slate-700 h-11 text-white font-medium"
@@ -83,7 +83,9 @@
 					on:change={(e) => (selectedPerson = e.detail)}
 					class="text-xs relative"
 				>
-					<ListboxButton class="text-slate-500 bg-slate-100 px-3 py-2 rounded-xl w-full">
+					<ListboxButton
+						class="text-slate-500 bg-slate-100 px-3 py-2 rounded-xl w-full active:ring-2 active:outline-0 active:ring-pink-400"
+					>
 						<div class="flex">
 							<span class="w-13 mr-1">Order by:</span>
 							<div
@@ -111,7 +113,7 @@
 			<Stacks />
 		</section>
 	</div>
-	<div class="absolute bottom-5 left-5 right-5">
+	<div class="fixed xs:absolute bottom-5 left-5 right-5">
 		<Button
 			type="one"
 			on:toggleAdd={() => {
